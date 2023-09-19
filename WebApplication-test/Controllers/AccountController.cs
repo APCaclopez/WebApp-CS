@@ -1,15 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebApplication_test.Models.EntityManager;
 using WebApplication_test.Models.ViewModel;
-using WebApplication_test.Models;
 
-namespace WebApplication_test.Controllers
+namespace MyWebApplication.Controllers
 {
     public class AccountController : Controller
     {
         public ActionResult SignUp()
         {
             return View();
+        }
+
+        public ActionResult Users()
+        {
+            UserManager um = new UserManager();
+            UsersModel user = um.GetAllUsers();
+
+            return View(user);
         }
 
         [HttpPost]
@@ -30,12 +37,19 @@ namespace WebApplication_test.Controllers
             return View();
         }
 
-        [HttpGet]
-        public ActionResult GetUsers()
+        [HttpPut]
+        public async Task<ActionResult> Update([FromBody] UserModel userData)
         {
-            var users = new UserManager().GetAllUsers();
-
-            return View();
+            UserManager um = new UserManager();
+            if (um.IsLoginNameExist(userData.LoginName))
+            {
+                um.UpdateUserAccount(userData);
+                return RedirectToAction("Index"); // Redirect to a relevant action after successful update.
+            }
+            // Handle the case when the login name doesn't exist, e.g., return a relevant error view.
+            return RedirectToAction("LoginNameNotFound");
         }
+
     }
 }
+
