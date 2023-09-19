@@ -101,6 +101,7 @@ namespace WebApplication_test.Models.EntityManager
                     db.SaveChanges();
                 }
             }
+
         }
 
         public UsersModel GetAllUsers()

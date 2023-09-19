@@ -2,7 +2,7 @@
 using WebApplication_test.Models.EntityManager;
 using WebApplication_test.Models.ViewModel;
 
-namespace MyWebApplication.Controllers
+namespace WebApplication_test.Controllers
 {
     public class AccountController : Controller
     {
@@ -52,4 +52,3 @@ namespace MyWebApplication.Controllers
 
     }
 }
-
