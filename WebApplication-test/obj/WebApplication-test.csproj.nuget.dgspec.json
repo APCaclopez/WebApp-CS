@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Aliyah\\Documents\\APC\\Y3T1\\ENTJAVA\\WebApplication-test\\WebApplication-test\\WebApplication-test.csproj": {}
+    "C:\\Users\\Aliyah\\Documents\\APC\\Y3T1\\ENTJAVA\\WebApp-CS\\WebApplication-test\\WebApplication-test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Aliyah\\Documents\\APC\\Y3T1\\ENTJAVA\\WebApplication-test\\WebApplication-test\\WebApplication-test.csproj": {
+    "C:\\Users\\Aliyah\\Documents\\APC\\Y3T1\\ENTJAVA\\WebApp-CS\\WebApplication-test\\WebApplication-test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aliyah\\Documents\\APC\\Y3T1\\ENTJAVA\\WebApplication-test\\WebApplication-test\\WebApplication-test.csproj",
+        "projectUniqueName": "C:\\Users\\Aliyah\\Documents\\APC\\Y3T1\\ENTJAVA\\WebApp-CS\\WebApplication-test\\WebApplication-test.csproj",
         "projectName": "WebApplication-test",
-        "projectPath": "C:\\Users\\Aliyah\\Documents\\APC\\Y3T1\\ENTJAVA\\WebApplication-test\\WebApplication-test\\WebApplication-test.csproj",
+        "projectPath": "C:\\Users\\Aliyah\\Documents\\APC\\Y3T1\\ENTJAVA\\WebApp-CS\\WebApplication-test\\WebApplication-test.csproj",
         "packagesPath": "C:\\Users\\Aliyah\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aliyah\\Documents\\APC\\Y3T1\\ENTJAVA\\WebApplication-test\\WebApplication-test\\obj\\",
+        "outputPath": "C:\\Users\\Aliyah\\Documents\\APC\\Y3T1\\ENTJAVA\\WebApp-CS\\WebApplication-test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Aliyah\\AppData\\Roaming\\NuGet\\NuGet.Config",

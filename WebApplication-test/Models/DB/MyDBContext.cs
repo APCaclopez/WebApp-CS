@@ -56,7 +56,7 @@ namespace WebApplication_test.Models.DB
 
                 entity.Property(e => e.Gender)
                   .HasColumnName("Gender")
-                  .HasColumnType("char(1)");
+                  .HasColumnType("char(6)");
 
                 entity.Property(e => e.CreatedBy)
                   .HasColumnName("RowCreatedSYSUserID")
