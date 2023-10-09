@@ -22,6 +22,8 @@ namespace WebApplication_test.Controllers
         [HttpPost]
         public ActionResult SignUp(UserModel user)
         {
+            ModelState.Remove("AccountImage");
+
             if (ModelState.IsValid)
             {
                 UserManager um = new UserManager();
