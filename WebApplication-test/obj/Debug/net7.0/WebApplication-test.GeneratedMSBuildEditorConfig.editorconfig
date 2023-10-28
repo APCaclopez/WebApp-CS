@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Aliyah\Documents\APC\Y3T1\ENTJAVA\WebApp-CS\WebApplication-test
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Aliyah/Documents/APC/Y3T1/ENTJAVA/WebApp-CS/WebApplication-test/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Aliyah/Documents/APC/Y3T1/ENTJAVA/WebApp-CS/WebApplication-test/Views/Account/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxTaWduVXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
