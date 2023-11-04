@@ -10,7 +10,7 @@ namespace WebApplication_test.Models.ViewModel
         public int UserID { get; set; }
         [RegularExpression(@"^[\w\.-]+@[\w\.-]+\.\w+$", ErrorMessage = "Login ID should be a valid email address.")]
         [Required(ErrorMessage = "*")]
-        [Display(Name = "Login ID")]
+        [Display(Name = "Email")]
         public string LoginName { get; set; }
 
         [Required(ErrorMessage = "*")]
@@ -57,3 +57,6 @@ namespace WebApplication_test.Models.ViewModel
         public string Password { get; set; }
     }
 }
+
+
+

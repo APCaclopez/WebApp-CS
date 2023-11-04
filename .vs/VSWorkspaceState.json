@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\WebApplication-test",
+    "\\WebApplication-test\\Models",
+    "\\WebApplication-test\\Models\\DB",
+    "\\WebApplication-test\\Models\\EntityManager",
+    "\\WebApplication-test\\Models\\ViewModel",
+    "\\WebApplication-test\\Views",
+    "\\WebApplication-test\\Views\\Account",
+    "\\WebApplication-test\\Views\\Shared"
+  ],
+  "SelectedNode": "\\WebApplication-test\\Views\\Account\\Users.cshtml",
+  "PreviewInSolutionExplorer": false
+}

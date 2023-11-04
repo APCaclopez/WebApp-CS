@@ -22,6 +22,20 @@ namespace WebApplication_test.Controllers
             return View();
         }
 
+        [AuthorizeRoles("Admin", "Member")]
+        public ActionResult MyProfile()
+        {
+            UserManager um = new UserManager();
+            string username = HttpContext.User.Identity.Name;
+            if (!um.IsLoginNameExist(username))
+            {
+                return RedirectToAction("LoginNameNotFound");
+            }
+
+            UserModel user = um.GetUser(username);
+            return View(user);
+        }
+
         [AuthorizeRoles("Admin")]
         public ActionResult Users()
         {
@@ -106,6 +120,44 @@ namespace WebApplication_test.Controllers
 
             // If authentication fails or ModelState is invalid, redisplay the login form
             return View();
+        }
+
+        [HttpPost]
+        [AuthorizeRoles("Admin", "Member")]
+        public ActionResult MyProfile(UserModel userData)
+        {
+            ModelState.Remove("AccountImage");
+            ModelState.Remove("RoleName");
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            UserManager um = new UserManager();
+            string username = HttpContext.User.Identity.Name;
+            if (!um.IsLoginNameExist(username))
+            {
+                return RedirectToAction("LoginNameNotFound");
+            }
+
+            if (userData.LoginName != username && um.IsLoginNameExist(userData.LoginName))
+            {
+                ModelState.AddModelError("", "Login name already exists");
+                return View();
+            }
+
+            um.UpdateMyAccount(userData, username);
+
+            // HttpContext becomes invalid if we change login name
+            // Force user to reauthenticate to prevent unauthorized access
+            if (userData.LoginName != username)
+            {
+                HttpContext.SignOutAsync();
+                return RedirectToAction("LogIn");
+            }
+
+            return RedirectToAction("Index", "Home"); // Redirect to a relevant action after successful update.
         }
 
         [HttpPost]

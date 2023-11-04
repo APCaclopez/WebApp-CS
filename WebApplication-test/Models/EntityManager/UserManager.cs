@@ -41,7 +41,7 @@ namespace WebApplication_test.Models.EntityManager
                 db.Users.Add(newUser);
                 db.SaveChanges();
 
-                int roleId = db.Role.First(r => r.RoleName == "Admin").RoleID;
+                int roleId = db.Role.First(r => r.RoleName == "Member").RoleID;
 
                 UserRole userRole = new UserRole
                 {
@@ -125,6 +125,84 @@ namespace WebApplication_test.Models.EntityManager
                 }
             }
 
+        }
+
+        public void UpdateMyAccount(UserModel user)
+        {
+            UpdateMyAccount(user, user.LoginName);
+        }
+
+        public void UpdateMyAccount(UserModel user, string username)
+        {
+            using (MyDBContext db = new MyDBContext())
+            {
+                // Check if a user with the given login name already exists
+                SystemUsers existingSysUser = db.SystemUsers.FirstOrDefault(
+                    u => u.LoginName == username
+                );
+                Users existingUser = db.Users.FirstOrDefault(
+                    u => u.UserID == existingSysUser.UserID
+                );
+
+                if (existingSysUser == null && existingUser == null)
+                {
+                    return;
+                }
+
+                // Update the existing user
+                existingSysUser.ModifiedBy = 1; // This has to be updated
+                existingSysUser.ModifiedDateTime = DateTime.Now;
+                existingSysUser.LoginName = user.LoginName;
+                existingSysUser.PasswordEncryptedText = user.Password;
+
+                // You can also update other properties of the user as needed
+                existingUser.FirstName = user.FirstName;
+                existingUser.LastName = user.LastName;
+                existingUser.Gender = user.Gender;
+
+                db.SaveChanges();
+            }
+        }
+
+        public UserModel GetUser(string user)
+        {
+            UserModel userModel = new();
+
+            using (MyDBContext db = new MyDBContext())
+            {
+                var users =
+                    from u in db.Users
+                    join us in db.SystemUsers on u.UserID equals us.UserID
+                    join ur in db.UserRole on u.UserID equals ur.UserID
+                    join r in db.Role on ur.LookUpRoleID equals r.RoleID
+                    where us.LoginName == user
+                    select new
+                    {
+                        u,
+                        us,
+                        r,
+                        ur
+                    };
+
+                userModel = users
+                    .Select(
+                        records =>
+                            new UserModel()
+                            {
+                                LoginName = records.us.LoginName,
+                                FirstName = records.u.FirstName,
+                                LastName = records.u.LastName,
+                                Gender = records.u.Gender,
+                                CreatedBy = records.u.CreatedBy,
+                                AccountImage = records.u.AccountImage ?? string.Empty,
+                                RoleID = records.ur.LookUpRoleID,
+                                RoleName = records.r.RoleName
+                            }
+                    )
+                    .First();
+            }
+
+            return userModel;
         }
 
         public UsersModel GetAllUsers()
